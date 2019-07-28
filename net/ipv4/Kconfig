@@ -491,6 +491,7 @@ config TCP_CONG_CUBIC
 
 config TCP_CONG_WESTWOOD
 	tristate "TCP Westwood+"
+	depends on INET
 	default m
 	---help---
 	TCP Westwood+ is a sender-side only modification of the TCP Reno
@@ -502,6 +503,8 @@ config TCP_CONG_WESTWOOD
 	account the bandwidth used  at the time congestion is experienced.
 	TCP Westwood+ significantly increases fairness wrt TCP Reno in
 	wired networks and throughput over wireless links.
+
+
 
 config TCP_CONG_HTCP
         tristate "H-TCP"
@@ -621,7 +624,7 @@ config TCP_CONG_DCTCP
 
 choice
 	prompt "Default TCP congestion control"
-	default DEFAULT_CUBIC
+	default DEFAULT_WESTWOOD
 	help
 	  Select the TCP congestion control that will be used by default
 	  for all connections.
